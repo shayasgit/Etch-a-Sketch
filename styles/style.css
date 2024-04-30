@@ -1,7 +1,25 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
 h1 {
     text-align: center;
+}
+
+.container {
+    box-sizing: content-box;
+    border: 1px solid red;
+    margin: auto;
+    width: 720px;
+    height: 720px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.grid-cell {
+    border: 1px solid lightgrey;
 }

@@ -11,3 +11,10 @@ for (let i = 0; i < (16 * 16); i++) {
     gridCell.style.height = `${containerWidth / 16}px`;
     container.appendChild(gridCell);
 }
+
+let gridCells = document.querySelectorAll('.grid-cell');
+gridCells.forEach(gridCell => {
+    gridCell.addEventListener('mouseover', () => {
+        gridCell.style.backgroundColor = 'black';
+    })
+})

@@ -4,7 +4,7 @@ let container = document.querySelector('.container');
 containerWidth = container.clientWidth;
 containerHeight = container.clientHeight;
 
-function canvas(noOfGrid, color) {
+function drawCanvas(noOfGrid) {
     for (let i = 0; i < (noOfGrid * noOfGrid); i++) {
         let gridCell = document.createElement('div');
         gridCell.classList.add('grid-cell')
@@ -12,22 +12,29 @@ function canvas(noOfGrid, color) {
         gridCell.style.height = `${containerWidth / noOfGrid}px`;
         container.appendChild(gridCell);
     }
-    
+}
+
+function hover(color) {
     let gridCells = document.querySelectorAll('.grid-cell');
     gridCells.forEach(gridCell => {
         gridCell.addEventListener('mouseover', () => {
-            gridCell.style.backgroundColor = color;
+            if (color == 'random') {
+                gridCell.style.backgroundColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+            } else {
+                gridCell.style.backgroundColor = color;
+            }
         })
     });
 }
 
 function cleanGrid() {
-    while(container.hasChildNodes()) {
+    while (container.hasChildNodes()) {
         container.removeChild(container.firstChild)
     }
 }
 
-canvas(16, 'black');
+drawCanvas(16);
+hover('black');
 
 let askSize = document.querySelector('.prompt');
 askSize.addEventListener('click', () => {
@@ -36,5 +43,7 @@ askSize.addEventListener('click', () => {
         gridSize = parseInt(prompt("Enter the size of Gird", 16));
     } while (gridSize > 100 || gridSize < 1);
     cleanGrid();
-    canvas(gridSize, 'black');
-})
+    drawCanvas(gridSize);
+    hover('random');
+});
+

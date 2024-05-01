@@ -27,7 +27,7 @@ let askSize = document.querySelector('.prompt');
 askSize.addEventListener('click', () => {
     let gridSize = 0;
     do {
-        gridSize = parseInt(prompt("Enter the size of Gird"));
+        gridSize = parseInt(prompt("Enter the size of Gird", 16));
     } while (gridSize > 100 || gridSize < 1);
     while(container.hasChildNodes()) {
         container.removeChild(container.firstChild)

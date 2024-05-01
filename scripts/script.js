@@ -21,6 +21,12 @@ function canvas(noOfGrid, color) {
     });
 }
 
+function cleanGrid() {
+    while(container.hasChildNodes()) {
+        container.removeChild(container.firstChild)
+    }
+}
+
 canvas(16, 'black');
 
 let askSize = document.querySelector('.prompt');
@@ -29,8 +35,6 @@ askSize.addEventListener('click', () => {
     do {
         gridSize = parseInt(prompt("Enter the size of Gird", 16));
     } while (gridSize > 100 || gridSize < 1);
-    while(container.hasChildNodes()) {
-        container.removeChild(container.firstChild)
-    }
+    cleanGrid();
     canvas(gridSize, 'black');
 })

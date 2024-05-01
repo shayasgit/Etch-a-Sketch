@@ -32,3 +32,21 @@ h1 {
     font-size: 16px;
     padding: 8px;
 }
+
+.color-card {
+    display: block;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.color-card p {
+    margin-right: 24px;
+}
+
+.color-card button {
+    font-size: 12px;
+    padding: 8px;
+}

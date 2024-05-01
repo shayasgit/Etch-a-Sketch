@@ -4,6 +4,10 @@ let container = document.querySelector('.container');
 containerWidth = container.clientWidth;
 containerHeight = container.clientHeight;
 
+function randomColor () {
+    return Math.floor(Math.random() * 256);
+}
+
 function drawCanvas(noOfGrid) {
     for (let i = 0; i < (noOfGrid * noOfGrid); i++) {
         let gridCell = document.createElement('div');
@@ -19,7 +23,7 @@ function hover(color) {
     gridCells.forEach(gridCell => {
         gridCell.addEventListener('mouseover', () => {
             if (color == 'random') {
-                gridCell.style.backgroundColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+                gridCell.style.backgroundColor = `rgb(${randomColor()}, ${randomColor()}, ${randomColor()})`;
             } else {
                 gridCell.style.backgroundColor = color;
             }
@@ -33,8 +37,20 @@ function cleanGrid() {
     }
 }
 
+function selectColor() {
+    let colorBtns = document.querySelectorAll('.color');
+    colorBtns.forEach(colorBtn => {
+        colorBtn.addEventListener('click', () => {
+            let result = colorBtn.value;
+            hover(result);
+        })
+    })
+}
+
 drawCanvas(16);
 hover('black');
+let color = selectColor();
+hover(color);
 
 let askSize = document.querySelector('.prompt');
 askSize.addEventListener('click', () => {
@@ -44,6 +60,7 @@ askSize.addEventListener('click', () => {
     } while (gridSize > 100 || gridSize < 1);
     cleanGrid();
     drawCanvas(gridSize);
-    hover('random');
+    hover('black');
+    selectColor()
 });
 
